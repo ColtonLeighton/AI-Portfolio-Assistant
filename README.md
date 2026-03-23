@@ -9,10 +9,10 @@ Web app built to use live financial and news APIs, keyword search, vector-based 
 This is a personal project built independently to explore how modern AI systems—particularly hybrid search and RAG pipelines—can be applied to financial analysis, risk assessment, and market insight generation.
 
 ## Overview
-FinSightAI helps users:
+AIPortfolioAssistant helps users:
 - Analyze portfolios and evaluate company holdings.
 - Explore market and company news intelligently.
-- Monitor emerging risks and trends in real time.
+- View an interactive dashboard showing portfolio risk, sector exposure, and emerging market trends.
 
 ## Features / Demonstrated AI Searches
 
