@@ -1,0 +1,9 @@
+Diversification is a fundamental investment strategy used to reduce risk within a portfolio. The core idea behind diversification is to spread investments across different asset classes, industries, and geographic regions so that the overall portfolio is not overly dependent on the performance of a single investment.
+
+For example, instead of investing only in technology stocks, an investor might allocate funds across sectors such as healthcare, energy, finance, and consumer goods. This way, if one sector underperforms, gains in another sector can help offset the losses.
+
+Diversification can also include different types of assets, such as stocks, bonds, real estate, and commodities. Each asset class reacts differently to economic conditions, which helps stabilize overall portfolio performance.
+
+While diversification reduces risk, it does not eliminate it entirely. Over-diversification can also dilute potential returns, especially if too many low-performing assets are included.
+
+In modern portfolio theory, diversification is considered essential for achieving an optimal balance between risk and return. It is especially important for long-term investors who want to protect their investments from market volatility while still participating in growth opportunities.

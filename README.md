@@ -1,4 +1,4 @@
-# AI-Portfolio-Assistant
+# AI-Portfolio-Assistant 
 
 AI-powered assistant for portfolio analysis, market insights, and emerging risk monitoring.
 
@@ -28,7 +28,7 @@ AIPortfolioAssistant helps users:
 ### Financial Advice Chatbot
 - Ask questions about investing or finance.
 - **Search:** Hybrid search + RAG (retrieval-augmented generation)
-- **Goal:** Provide context-aware, AI-assisted answers.
+- **Goal:** Provide context-aware, AI-assisted answers based off provided documents.
 
 ### Market / Company News Explorer
 - Explore news by company, ticker, or topic.
@@ -42,18 +42,18 @@ AIPortfolioAssistant helps users:
 
 ---
 
-## AI Stack (Planned)
-- LLM: Llama 3 (via Ollama)
+## AI Stack (Current)
+- LLM: Ollama (local models, e.g. dolphin-phi)
 - RAG Framework: LlamaIndex
-- Search: Hybrid (keyword + vector)
-- Embeddings: Local embedding models
+- Search: Currently **vector (semantic) search + RAG**
+- Embeddings: Ollama embedding models (local)
 
 ---
 
 ## Tech Stack (Planned)
 - **Frontend:** React (Next.js or Vite)
 - **Backend:** Python (FastAPI)
-- **Vector Database:** Pinecone or Chroma
+- **Vector Database:** Pinecone (planned)
 - **Database:** PostgreSQL
 - **Data Processing:** Pandas / NumPy
 
@@ -73,6 +73,20 @@ AIPortfolioAssistant helps users:
 
 ---
 
+## Concepts
+
+### What is a Vector Database?
+A vector database stores embeddings (numerical representations of text) and allows similarity search based on meaning instead of exact keywords.
+
+### What is RAG (Retrieval-Augmented Generation)?
+RAG retrieves relevant documents from a dataset and passes them to an LLM to generate more accurate, context-aware responses.
+
+### What data is used for RAG?
+Currently:
+- Local `/data` text files containing financial information
+
+---
+
 ## Status
 This project is currently in active development.  
 Core features and AI pipeline are being built incrementally.
@@ -80,4 +94,122 @@ Core features and AI pipeline are being built incrementally.
 ---
 
 ## Setup
-TBD
+
+### 1. Install dependencies
+pip install -r requirements.txt
+
+### 2. Install and run Ollama
+Download Ollama: https://ollama.com
+
+Pull required models:
+ollama pull dolphin-phi  
+ollama pull mxbai-embed-large  
+
+Start Ollama (if not already running):
+ollama run dolphin-phi
+
+### 3. Run the chatbot
+python chatbot.py
+
+---
+
+## Current Development Status (IMPORTANT)
+
+- Current stage: **Financial Related Chatbot using RAG (local setup)**
+- Hybrid search is **NOT fully implemented yet**
+  - Missing:
+    - keyword search
+    - combining keyword + vector results
+- Chatbot is fully **usable locally**
+
+Project timeline can be found in:
+- TIMELINE.md
+
+ Small development updates are being tracked in:
+- PRODUCTION_LOG.md
+
+---
+
+## Future Improvements
+
+### Financial Advice Chatbot (Current Focus)
+- Current:
+  - RAG pipeline is working locally using Ollama + LlamaIndex
+  - Uses vector (semantic) search over `/data` documents
+- Missing:
+  - True hybrid search
+    - keyword-based retrieval
+    - combining keyword + vector results
+- Next Steps:
+  - Implement keyword search layer
+  - Merge results with vector search (true hybrid retrieval)
+  - Improve prompt structure and response quality
+
+---
+
+### Vector Database Upgrade
+- Current:
+  - LlamaIndex built-in in-memory vector store (local only)
+
+- Planned:
+  - Pinecone (cloud vector database)
+
+- Why Pinecone:
+  - scalable for large datasets
+  - faster retrieval performance
+  - persistent storage (not lost on restart)
+  - production-ready infrastructure
+
+---
+
+### Portfolio Analysis Feature
+- Build CSV upload + parsing system
+- Implement structured data analysis (Pandas)
+- Add hybrid search + RAG for:
+  - company insights
+  - risk scoring
+- Output:
+  - portfolio breakdown
+  - risk metrics
+
+---
+
+### Market / News Explorer
+- Integrate APIs (NewsAPI, Finnhub, etc.)
+- Implement:
+  - keyword search (fast filtering)
+  - semantic search (relevance ranking)
+- Add RAG summarization for:
+  - company news
+  - market trends
+
+---
+
+### Emerging Risk Monitor
+- Combine:
+  - portfolio data
+  - news signals
+- Use:
+  - hybrid search + RAG summarization
+- Goal:
+  - detect early risk signals
+  - surface insights in dashboard
+
+---
+
+### Full Application Build (Backend + Frontend)
+- Backend:
+  - FastAPI for API endpoints
+  - connect RAG + search pipelines
+- Frontend:
+  - React (dashboard UI)
+  - portfolio visualization
+  - chatbot interface
+
+---
+
+### Deployment
+- Move from local → cloud deployment
+- Host backend + frontend
+- Connect Pinecone vector DB
+- Prepare for real-world usage

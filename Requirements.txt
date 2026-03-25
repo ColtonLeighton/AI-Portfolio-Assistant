@@ -1,0 +1,26 @@
+# Core AI / RAG
+llama-index==0.14.0
+llama-index-llms-ollama==0.1.6
+llama-index-embeddings-ollama==0.1.3
+ollama==0.3.3
+
+# Data processing
+pandas==2.2.2
+numpy==1.26.4
+
+# Backend (planned)
+fastapi==0.109.1
+uvicorn==0.27.0
+pydantic==2.12.3
+python-multipart==0.0.9
+
+# Database (planned)
+sqlalchemy==2.0.35
+psycopg2-binary==2.9.9
+
+# APIs + env
+requests==2.32.3
+python-dotenv==1.0.1
+
+# Vector DB (future)
+pinecone-client==3.2.2
