@@ -1,4 +1,4 @@
-<!-- Static HTML container where React app is injected into 'root' div -->
+// Entry point for the React app, renders <App /> into root HTML element
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
