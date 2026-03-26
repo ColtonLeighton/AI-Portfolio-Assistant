@@ -108,38 +108,29 @@ ollama pull mxbai-embed-large
 Start Ollama (if not already running):
 ollama run dolphin-phi
 
-### 3. Run the chatbot
+### 3. Run the Financial Advice Chatbot
 python chatbot.py
 
+### 4. Run the Market / Company News Explorer (optional)
+Replace the API key in news_explorer.py with your own free NewsAPI key: https://newsapi.org/register  
+Run the script locally:
+python news_explorer.py
+
+Notes:
+- Keyword search works well for tickers like AAPL
+- Prototype is fully local; web interface not yet integrated
+
 ---
 
-## Current Development Status (IMPORTANT)
+## Current Development Status & Future Improvements (Updated — March 25, 2026)
 
+### Financial Advice Chatbot
 - Current stage: **Financial Related Chatbot using RAG (local setup)**
-- Hybrid search is **NOT fully implemented yet**
-  - Missing:
-    - keyword search
-    - combining keyword + vector results
-- Chatbot is fully **usable locally**
-
-Project timeline can be found in:
-- TIMELINE.md
-
- Small development updates are being tracked in:
-- PRODUCTION_LOG.md
-
----
-
-## Future Improvements
-
-### Financial Advice Chatbot (Current Focus)
-- Current:
-  - RAG pipeline is working locally using Ollama + LlamaIndex
-  - Uses vector (semantic) search over `/data` documents
-- Missing:
-  - True hybrid search
-    - keyword-based retrieval
-    - combining keyword + vector results
+  - Hybrid search is **NOT fully implemented yet**
+    - Missing:
+      - keyword search
+      - combining keyword + vector results
+  - Chatbot is fully **usable locally**
 - Next Steps:
   - Implement keyword search layer
   - Merge results with vector search (true hybrid retrieval)
@@ -147,69 +138,71 @@ Project timeline can be found in:
 
 ---
 
-### Vector Database Upgrade
-- Current:
-  - LlamaIndex built-in in-memory vector store (local only)
+### Market / Company News Explorer
+- Local prototype implemented in `news_explorer.py` using:
+  - Ollama (`dolphin-phi`) for LLM
+  - Ollama embeddings (`mxbai-embed-large`)
+  - NewsAPI (free key) as data source
+- Keyword search works well for tickers like `AAPL`
+- Limitations:
+  - NewsAPI is not always up-to-date
+  - Prototype only; needs larger datasets for better coverage
+  - Possible enhancement: use a web search to find relevant articles first, then apply keyword + semantic search
+- Currently fully local, no web interface yet
+- Next Steps:
+  - Expand hybrid keyword + semantic search
+  - Add RAG summarization for concise company/news insights
+  - Integrate with fresh and larger news sources
+  - Connect to frontend once web app is hosted
 
+---
+
+### Portfolio Breakdown / Risk Assessment
+- Development has **not started** yet
 - Planned:
-  - Pinecone (cloud vector database)
-
-- Why Pinecone:
-  - scalable for large datasets
-  - faster retrieval performance
-  - persistent storage (not lost on restart)
-  - production-ready infrastructure
-
----
-
-### Portfolio Analysis Feature
-- Build CSV upload + parsing system
-- Implement structured data analysis (Pandas)
-- Add hybrid search + RAG for:
-  - company insights
-  - risk scoring
-- Output:
-  - portfolio breakdown
-  - risk metrics
-
----
-
-### Market / News Explorer
-- Integrate APIs (NewsAPI, Finnhub, etc.)
-- Implement:
-  - keyword search (fast filtering)
-  - semantic search (relevance ranking)
-- Add RAG summarization for:
-  - company news
-  - market trends
+  - Build CSV upload + parsing system
+  - Structured data analysis using Pandas
+  - Hybrid search + RAG for company insights and risk scoring
+  - Output: portfolio breakdown and risk metrics
 
 ---
 
 ### Emerging Risk Monitor
-- Combine:
-  - portfolio data
-  - news signals
-- Use:
-  - hybrid search + RAG summarization
-- Goal:
-  - detect early risk signals
-  - surface insights in dashboard
+- Development has **not started** yet
+- Planned:
+  - Combine portfolio data with news signals
+  - Use hybrid search + RAG summarization
+  - Goal: detect early risk signals and surface insights in dashboard
 
 ---
 
-### Full Application Build (Backend + Frontend)
+### Vector Database Upgrade
+- Current:
+  - LlamaIndex in-memory vector store (local only)
+- Planned:
+  - Pinecone cloud vector database for:
+    - Scalable datasets
+    - Faster retrieval
+    - Persistent storage
+    - Production-ready infrastructure
+
+---
+
+### Full Application Build Plan (Backend + Frontend)
 - Backend:
   - FastAPI for API endpoints
-  - connect RAG + search pipelines
+  - Connect RAG + search pipelines
 - Frontend:
   - React (dashboard UI)
-  - portfolio visualization
-  - chatbot interface
-
+  - Portfolio visualization
+  - Chatbot interface
+- Next Steps:
+  - Host web app (Render or other free/cloud option)
+  - Integrate deployable AI features using API (OpenAI or other) instead of local-only models
 ---
 
 ### Deployment
-- Move from local → cloud deployment
+- Move from local -> cloud deployment
 - Host backend + frontend
 - Connect Pinecone vector DB
 - Prepare for real-world usage

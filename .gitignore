@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+.env.*
+.pytest_cache/
+
+# Node / React
+frontend/node_modules/
+frontend/build/
+frontend/.pnp/
+frontend/.pnp.js
+
+# Local data / logs
+data/news.txt
+*.log
+
+# Docker
+*.env.local
+docker-compose.override.yml
+
+# VSCode / IDE
+.vscode/
+*.code-workspace
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

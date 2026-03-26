@@ -1,0 +1,120 @@
+/* Make sure full page height is covered */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Smooth custom gradient I made, for now, should change later */
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(253, 187, 45, 0.46) 100%
+  );
+  background-attachment: fixed;
+}
+
+/* wrapper to ensure spacing */
+.app-wrapper {
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+/* Main content */
+.container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Button styling */
+.button-19 {
+  appearance: button;
+  background-color: #1899d6;
+  border: solid transparent;
+  border-radius: 12px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 10px 14px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  text-decoration: none;
+  position: relative;
+}
+
+.button-19:after {
+  background-color: #1cb0f6;
+  border-radius: 12px;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.button-19:hover {
+  filter: brightness(1.1);
+}
+
+.button-19:active {
+  transform: translateY(2px);
+}
+
+/* Text styling */
+h1 {
+  margin-top: 0;
+  color: #222;
+}
+
+h2 {
+  color: #333;
+}
+
+h3 {
+  color: #555;
+}
+
+p {
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Links */
+a {
+  color: #1899d6;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Coming soon */
+.coming-soon {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  color: gray;
+  font-weight: bold;
+  text-align: center;
+}
