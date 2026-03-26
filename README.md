@@ -111,6 +111,8 @@ ollama run dolphin-phi
 ### 3. Run the Financial Advice Chatbot
 python chatbot.py
 
+Note: You can add your own financial documents into the data folder, to get responses more tailored to your specific situation. 
+
 ### 4. Run the Market / Company News Explorer (optional)
 Replace the API key in news_explorer.py with your own free NewsAPI key: https://newsapi.org/register  
 Run the script locally:
