@@ -1,4 +1,4 @@
-# chatbot.py
+# chatbot.py 
 # Financial Advice Chatbot using Ollama embeddings + Ollama LLM (fully local)
 
 from llama_index.core import SimpleDirectoryReader, VectorStoreIndex
@@ -20,7 +20,7 @@ embedding_model = OllamaEmbedding(model_name=embedding_model_name)
 documents = SimpleDirectoryReader("data").load_data()
 
 # Convert documents to TextNode objects
-nodes = [TextNode(text=d.text) for d in documents]
+nodes = [TextNode(text=document.text) for document in documents]
 
 # Build vector index using OllamaEmbedding
 index = VectorStoreIndex(nodes, embed_model=embedding_model)

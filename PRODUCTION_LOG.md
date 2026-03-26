@@ -95,3 +95,116 @@ across all features.
 ### Next Step
 
 - Implement true hybrid search (keyword + vector)
+
+---
+
+## March 25, 2026 — News Explorer + Web App (Local + Docker MVP)
+
+### Market / Company News Explorer (Local Feature)
+
+Built a working **news_explorer.py** feature locally using:
+- Ollama (`dolphin-phi`)
+- Ollama embeddings (`mxbai-embed-large`)
+- NewsAPI (free API key)
+
+How it works:
+- Fetches top ~20 articles from NewsAPI
+- Stores title + description into `news.txt`
+- Uses:
+  - Keyword search (basic string matching)
+  - Semantic (vector) search via embeddings
+- Combines both into a simple hybrid retrieval pipeline
+- Feeds results into LLM for answers (RAG-style)
+
+Notes:
+- Keyword search works especially well for exact terms like tickers (e.g. AAPL)
+- Semantic search helps fill in gaps when keyword matches are weak
+
+---
+
+### Issues / Limitations (NewsAPI)
+
+- Articles are not always very recent
+- Limited number of results
+- Only using title + description (not full article)
+
+Conclusion:
+- Good enough for a prototype
+- Not reliable for real-time or production-level insights
+
+Future improvements:
+- Pull more articles (pagination / multiple requests)
+- Use more recent / real-time news sources
+- Possibly:
+  - Use keyword first -> fetch relevant articles via web search
+  - Then run keyword + semantic search on those results
+
+---
+
+### Web App (Docker MVP)
+
+Built a **basic full-stack web app** using:
+- React (frontend)
+- FastAPI (backend)
+- Caddy (reverse proxy)
+- Docker + Docker Compose
+
+What’s working:
+- App runs locally via Docker
+- Accessible at `localhost`
+- Multiple pages set up:
+  - Home (project overview)
+  - Portfolio
+  - Chatbot
+  - News
+  - Risk
+
+Current state:
+- No real features implemented yet
+- Pages are placeholders (“Coming Soon”)
+- Mainly a structural/demo UI
+
+---
+
+### Why This Matters
+
+- First step toward turning local AI tools into a real web product
+- Confirms full-stack setup works (frontend + backend + routing)
+- Sets foundation for deploying features later
+
+---
+
+### Next Steps
+
+#### Web App
+- Deploy online (likely Render for free hosting)
+- Replace local-only components:
+  - Ollama -> OpenAI API (or similar hosted LLM)
+- Connect backend APIs to frontend pages
+- Gradually implement each feature into the UI
+
+---
+
+#### Market / Company News Explorer (Next Iteration)
+
+To make it production-ready:
+
+- Replace local Ollama with hosted LLM (OpenAI API)
+- Improve data pipeline:
+  - Fetch more articles
+  - Ensure more recent data
+- Possibly integrate:
+  - Web search -> retrieve relevant articles dynamically
+- Improve retrieval:
+  - Better keyword matching
+  - More robust hybrid search logic
+- Store data in database (instead of flat text file)
+
+---
+
+### Takeaways
+
+- Hybrid search (keyword + semantic) works well even in simple form
+- Data quality (news freshness + volume) is a major limitation right now
+- Dockerized web app proves the architecture is viable
+- Next phase is moving from local -> hosted system
