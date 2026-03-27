@@ -1,7 +1,4 @@
 # AI / LLM Pipeline
-
-![AI Pipeline](ai_pipeline.png)
-
 ---
 
 ## Overview
@@ -15,6 +12,8 @@ The goal is to combine:
 to produce accurate, explainable outputs for users.
 
 ---
+
+![AI Pipeline](ai_pipeline.png)
 
 ## Core Concepts
 
