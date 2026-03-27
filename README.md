@@ -26,8 +26,7 @@ AIPortfolioAssistant helps users:
 - Explore market and company news intelligently
 - View interactive dashboards with risk scores, sector exposure, and emerging trends
 
-!(readme.png)
-
+![General Overview Diagram](readme.png)
 ---
 
 ## Features / Demonstrated AI Searches
