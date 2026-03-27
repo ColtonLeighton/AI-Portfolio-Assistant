@@ -1,9 +1,5 @@
 # System Architecture
 
-![System Architecture](architecture.png)
-
----
-
 ## Overview
 The application follows a modern full-stack architecture:
 
@@ -31,6 +27,9 @@ Data Layer
 
 ---
 
+![System Architecture](architecture.png)
+
+---
 ## Components
 
 ### 1. Frontend (React)
