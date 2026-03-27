@@ -2,6 +2,8 @@
 
 High-level roadmap for building the AI Portfolio Assistant.
 
+![Project Timeline](timeline.png)
+
 ---
 
 ## Phase 1 — Local AI Setup
@@ -9,6 +11,7 @@ High-level roadmap for building the AI Portfolio Assistant.
 - Set up local LLM (`dolphin-phi`)
 - Configured embedding model (`mxbai-embed-large`)
 - Built initial document pipeline (`/data`)
+- Verified embeddings could be generated and searched locally
 
 ---
 
@@ -16,25 +19,26 @@ High-level roadmap for building the AI Portfolio Assistant.
 - Implemented Financial Advice Chatbot
 - Built vector index over local documents
 - Connected retrieval → LLM (RAG pipeline)
+- Tested responses with local financial documents
 
 Result:
 - Working, fully local AI chatbot
+- Vector search and RAG pipeline functional
 
 ---
 
 ## Phase 3 — Hybrid Search (CURRENT)
 Goal:
-Improve retrieval quality across the system
+- Improve retrieval quality across the system by combining keyword and semantic search
 
 Remaining work:
 - Add keyword search (BM25 or simple matching)
 - Combine keyword + semantic results
 - Tune ranking of retrieved documents
-
-This will be reused across:
-- chatbot
-- portfolio analysis
-- news search
+- Apply hybrid search consistently across all modules:
+  - Chatbot
+  - Portfolio analysis
+  - News search
 
 ---
 
@@ -48,7 +52,8 @@ This will be reused across:
 - Output:
   - risk score
   - sector exposure
-  - insights
+  - actionable insights
+- Goal: allow investors to evaluate holdings intelligently
 
 ---
 
@@ -56,8 +61,10 @@ This will be reused across:
 - Integrate external APIs (NewsAPI, Finnhub)
 - Implement:
   - keyword + semantic search
+  - local storage of news (SQLite prototype)
 - Goal:
   - fast, relevant news retrieval
+  - support for company/ticker-specific exploration
 
 ---
 
@@ -68,6 +75,7 @@ This will be reused across:
   - RAG summarization
 - Goal:
   - highlight potential risks early
+  - enable proactive risk assessment in portfolios
 
 ---
 
@@ -78,25 +86,35 @@ This will be reused across:
   - user queries
   - portfolio inputs
   - data fetching
+- Include database connections:
+  - SQLite for prototyping
+  - PostgreSQL planned for production
 
 ---
 
 ## Phase 6 — Vector Database Upgrade
 - Replace in-memory store with **Pinecone**
-
-Why:
-- persistence
-- scalability
-- faster retrieval
+- Why:
+  - persistence
+  - scalability
+  - faster retrieval
+- Enable:
+  - larger datasets
+  - cloud-hosted hybrid search
+  - production-ready AI pipelines
 
 ---
 
 ## Phase 7 — Frontend UI
 - Build interface (React)
 - Features:
-  - chatbot UI
-  - portfolio dashboard
-  - news explorer
+  - Chatbot UI
+  - Portfolio dashboard
+  - News explorer
+  - Risk monitoring visualizations
+- Goal:
+  - integrate backend AI services
+  - provide real-time interactive interface
 
 ---
 
@@ -104,11 +122,11 @@ Why:
 - Deploy backend + frontend
 - Connect to cloud services
 - Optimize performance
+- Prepare for user access and scalability
 
 ---
 
 ## Summary
-
 - RAG chatbot: complete  
 - Hybrid search: in progress  
 - Core platform features: upcoming  

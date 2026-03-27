@@ -1,58 +1,79 @@
-# AI-Portfolio-Assistant 
+# AI-Portfolio-Assistant
+
+![Project Overview](timeline.png)
 
 AI-powered assistant for portfolio analysis, market insights, and emerging risk monitoring.
 
+---
+
 ## Purpose
-Web app built to use live financial and news APIs, keyword search, vector-based semantic search, hybrid retrieval, and RAG-based answer generation to turn real-time data into portfolio insights, risk analysis, and market intelligence.
+Web app designed to turn real-time financial and news data into actionable insights using:
+- Keyword + semantic search
+- Hybrid retrieval
+- RAG-based AI reasoning
+
+---
 
 ## Project Context
-This is a personal project built independently to explore how modern AI systems—particularly hybrid search and RAG pipelines—can be applied to financial analysis, risk assessment, and market insight generation.
+Personal project exploring modern AI pipelines (hybrid search + RAG) applied to:
+- Portfolio analysis
+- Risk assessment
+- Market intelligence
 
 ---
 
 ## Overview
 AIPortfolioAssistant helps users:
-- Analyze portfolios and evaluate company holdings.
-- Explore market and company news intelligently.
-- View an interactive dashboard showing portfolio risk, sector exposure, and emerging market trends.
+- Analyze portfolios and evaluate holdings
+- Explore market and company news intelligently
+- View interactive dashboards with risk scores, sector exposure, and emerging trends
 
 ---
 
 ## Features / Demonstrated AI Searches
 
 ### Portfolio Breakdown / Risk Assessment
-- Users upload or input portfolio data (CSV or chat).
-- **Search:** Structured retrieval + Hybrid search (keyword + semantic)
-- **Goal:** Evaluate holdings and assign risk scores.
+- Upload portfolio (CSV or manual input)
+- **Search:** Structured + hybrid retrieval (planned)
+- **Goal:** Evaluate holdings and assign risk scores
 
 ### Financial Advice Chatbot
-- Ask questions about investing or finance.
-- **Search:** Hybrid search + RAG (retrieval-augmented generation)
-- **Goal:** Provide context-aware, AI-assisted answers based off provided documents.
+- Ask natural language finance questions
+- **Search:** Hybrid retrieval + RAG (currently only RAG)
+- **Goal:** Provide context-aware, AI-assisted answers from documents
 
 ### Market / Company News Explorer
-- Explore news by company, ticker, or topic.
-- **Search:** Keyword + Semantic (vector) search
-- **Goal:** Retrieve relevant news articles quickly.
+- Explore news by ticker, company, or topic
+- **Search:** Keyword + semantic search
+- **Goal:** Retrieve relevant news efficiently
 
 ### Emerging Risk Monitor
-- Dashboard that highlights rising risks in portfolios or sectors.
-- **Search:** Structured data + Hybrid search + RAG summarization
-- **Goal:** Identify early warning signals for investors.
+- Dashboard highlights rising risks in portfolios or sectors
+- **Search:** Structured data + hybrid retrieval + RAG summarization
+- **Goal:** Detect early warning signals
+
+---
+
+## New Updates (Dynamic Website Branch: `web-service-deployment`)
+- Connected Google’s free-tier Gemini API key
+- Redid `chatbot.py` (RAG only, no hybrid yet) and `news_explorer.py` for Gemini API integration
+- SQLite used for storing news API stories and other dynamic site data
+- Verified SQLite files filter news correctly
+- Added **4 diagrams** (timeline, architecture, AI pipeline, etc.)
 
 ---
 
 ## AI Stack (Current)
-- LLM: Ollama (local models, e.g. dolphin-phi)
-- RAG Framework: LlamaIndex
-- Search: Currently **vector (semantic) search + RAG**
-- Embeddings: Ollama embedding models (local)
+- **LLM:** Ollama (local, e.g., dolphin-phi)
+- **RAG Framework:** LlamaIndex
+- **Search:** Vector (semantic) search + RAG
+- **Embeddings:** Ollama embedding models (local)
 
 ---
 
 ## Tech Stack (Planned)
-- **Frontend:** React (Next.js or Vite)
-- **Backend:** Python (FastAPI)
+- **Frontend:** React (Vite/Next.js)
+- **Backend:** FastAPI (Python)
 - **Vector Database:** Pinecone (planned)
 - **Database:** PostgreSQL
 - **Data Processing:** Pandas / NumPy
@@ -63,33 +84,30 @@ AIPortfolioAssistant helps users:
 - Financial data: yfinance, Alpha Vantage, Polygon.io
 - News data: NewsAPI, Finnhub
 
-(See `docs/DATA_SOURCES.md` for details)
-
 ---
 
 ## Architecture & AI Pipeline
-- See `docs/ARCHITECTURE.md` for system design
+- See `docs/ARCHITECTURE.md` for system design  
 - See `docs/AI_PIPELINE.md` for retrieval + RAG pipeline
+
+![AI Pipeline](ai_pipeline.png)
 
 ---
 
 ## Concepts
 
-### What is a Vector Database?
-A vector database stores embeddings (numerical representations of text) and allows similarity search based on meaning instead of exact keywords.
-
-### What is RAG (Retrieval-Augmented Generation)?
-RAG retrieves relevant documents from a dataset and passes them to an LLM to generate more accurate, context-aware responses.
-
-### What data is used for RAG?
-Currently:
-- Local `/data` text files containing financial information
+**Vector Database:** stores embeddings for semantic similarity search  
+**RAG (Retrieval-Augmented Generation):** retrieves relevant documents to feed LLM for accurate, grounded answers  
+**Current RAG Data:** local `/data` text files with financial information
 
 ---
 
 ## Status
-This project is currently in active development.  
-Core features and AI pipeline are being built incrementally.
+- **Financial Chatbot:** RAG functional locally, hybrid search pending  
+- **News Explorer:** Gemini API prototype working with SQLite storage  
+- **Portfolio Analysis & Risk Monitor:** in planning stage  
+- **Vector Database Upgrade:** Pinecone planned, currently in-memory with LlamaIndex  
+- **Full App Build:** backend (FastAPI) + frontend (React) under development
 
 ---
 

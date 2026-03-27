@@ -1,5 +1,9 @@
 # AI / LLM Pipeline
 
+![AI Pipeline](ai_pipeline.png)
+
+---
+
 ## Overview
 The system uses a hybrid retrieval + RAG (Retrieval-Augmented Generation) pipeline to generate grounded financial insights from both structured market data and unstructured sources such as news and reports.
 
@@ -96,7 +100,7 @@ to produce accurate, explainable outputs for users.
 ---
 
 ### Embeddings
-- Local embedding models ( Ollama or HuggingFace)
+- Local embedding models (Ollama or HuggingFace)
 
 #### Purpose:
 - Convert:
@@ -117,15 +121,15 @@ The system processes both structured and unstructured data:
 
 ### Structured Data
 - Stock prices
-- volatility
-- financial ratios
-- sector classifications
+- Volatility
+- Financial ratios
+- Sector classifications
 - Retrieved from financial APIs
 
 ### Unstructured Data
 - News articles
-- financial reports
-- analysis content
+- Financial reports
+- Analysis content
 
 ---
 

@@ -1,5 +1,9 @@
 # System Architecture
 
+![System Architecture](architecture.png)
+
+---
+
 ## Overview
 The application follows a modern full-stack architecture:
 
@@ -36,6 +40,11 @@ Data Layer
   - News exploration
   - Risk dashboard
 - Communicates with backend via REST API
+- Handles:
+  - Form submissions
+  - Querying AI endpoints
+  - Displaying hybrid search results and RAG-generated answers
+- Designed to be reactive and modular for future feature expansion
 
 ---
 
@@ -46,6 +55,13 @@ Data Layer
   - Portfolio parsing
   - Calls to AI pipeline
 - Acts as the central orchestrator
+- Integrates with databases:
+  - SQLite (prototype)
+  - PostgreSQL (planned production)
+- Handles:
+  - Validation
+  - Logging
+  - Session management (future)
 
 ---
 
@@ -53,11 +69,12 @@ Data Layer
 
 - LLM: Llama 3 (via Ollama)
 - Framework: LlamaIndex
-
-#### Responsibilities:
-- Query processing
-- Hybrid retrieval (keyword + vector)
-- RAG-based response generation
+- Responsible for:
+  - Query processing
+  - Hybrid retrieval (keyword + vector)
+  - RAG-based response generation
+  - Semantic similarity computation
+  - Context-aware answer generation
 
 📄 See `AI_PIPELINE.md` for detailed pipeline design.
 
@@ -71,34 +88,42 @@ Data Layer
   - volatility
   - fundamentals
   - sector data
-- Retrieved in real-time from APIs
+- Retrieved in real-time from:
+  - yfinance
+  - Alpha Vantage
+  - Polygon.io (future)
+- Used for:
+  - Portfolio analysis
+  - Risk assessment
+  - Dashboard metrics
 
 ---
 
 #### Application Database (PostgreSQL)
 - Stores:
-  - user data (future)
-  - saved portfolios
-  - session data
+  - User data (future)
+  - Saved portfolios
+  - Session data
 - Used for:
-  - persistence
-  - fast retrieval of user-specific data
+  - Persistence
+  - Fast retrieval of user-specific data
+  - Backend query optimization
 
 ---
 
 #### Unstructured Data (Vector Database)
 - Stores:
-  - news articles
-  - financial documents
-  - reports
-
+  - News articles
+  - Financial documents
+  - Reports
 - Data is:
-  - converted into embeddings
-  - stored for semantic search
-
+  - Converted into embeddings
+  - Stored for semantic search
+  - Accessible for hybrid search pipelines
 - Enables:
-  - vector search
-  - hybrid retrieval
+  - Vector search
+  - RAG augmentation
+  - Cross-document reasoning
 
 ---
 
@@ -121,3 +146,4 @@ Data Layer
 - Hybrid retrieval for accuracy + context
 - Real-time data integration (APIs)
 - Scalable architecture for future prototypes
+- Modular components to allow easy addition of new AI features

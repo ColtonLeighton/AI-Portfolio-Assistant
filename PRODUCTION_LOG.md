@@ -208,3 +208,62 @@ To make it production-ready:
 - Data quality (news freshness + volume) is a major limitation right now
 - Dockerized web app proves the architecture is viable
 - Next phase is moving from local -> hosted system
+
+---
+
+## March 26, 2026 — Dynamic Website + Gemini API Updates
+
+### Dynamic Web Integration
+
+Began transitioning the project toward a **dynamic web-based system** (branch: `web-service-deployment`).
+
+- Connected Google’s free-tier **Gemini API key**
+- Shifted parts of the system from local-only models toward API-based usage
+
+---
+
+### Chatbot Updates
+
+- Refactored `chatbot.py` for use in a dynamic web environment
+- Integrated Gemini API for responses
+- Current state:
+  - RAG pipeline working
+  - Hybrid search still not implemented
+
+---
+
+### News Explorer Updates
+
+- Refactored `news_explorer.py` for dynamic usage
+- Integrated Gemini API
+- Replaced flat file storage with **SQLite**
+
+What’s working:
+- News data is being stored in SQLite
+- Filtering and retrieval from the database is working correctly
+
+---
+
+### Documentation Updates
+
+- Created and added diagrams:
+  - AI pipeline
+  - architecture
+  - timeline
+- Integrated these into project README and documentation files
+
+---
+
+### Takeaways
+
+- Gemini API works well for moving toward deployment
+- SQLite is a better fit than flat files for dynamic data handling
+- System is now partially transitioned from local → web-ready
+
+---
+
+### Next Steps
+
+- Implement hybrid search (keyword + vector)
+- Connect backend logic fully to frontend
+- Continue preparing for deployment
