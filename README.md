@@ -62,7 +62,7 @@ AIPortfolioAssistant helps users:
 ---
 
 ## Tech Stack (Planned)
-- **Frontend:** React (Vite/Next.js)
+- **Frontend:** React (Next.js)
 - **Backend:** FastAPI (Python)
 - **Vector Database:** Pinecone (planned)
 - **Database:** PostgreSQL
@@ -96,7 +96,7 @@ AIPortfolioAssistant helps users:
 - **Financial Chatbot:** RAG functional locally, hybrid search pending  
 - **News Explorer:** Gemini API prototype working with SQLite storage  
 - **Portfolio Analysis & Risk Monitor:** in planning stage  
-- **Vector Database Upgrade:** Pinecone planned, currently in-memory with LlamaIndex  
+- **Vector Database Upgrade:** Pinecone planned, local version currently in-memory with LlamaIndex  
 - **Full App Build:** backend (FastAPI) + frontend (React) under development
 
 ---
@@ -129,41 +129,6 @@ python news_explorer.py
 Notes:
 - Keyword search works well for tickers like AAPL
 - Prototype is fully local; web interface not yet integrated
-
----
-
-## Current Development Status & Future Improvements (Updated — March 25, 2026)
-
-### Financial Advice Chatbot
-- Current stage: **Financial Related Chatbot using RAG (local setup)**
-  - Hybrid search is **NOT fully implemented yet**
-    - Missing:
-      - keyword search
-      - combining keyword + vector results
-  - Chatbot is fully **usable locally**
-- Next Steps:
-  - Implement keyword search layer
-  - Merge results with vector search (true hybrid retrieval)
-  - Improve prompt structure and response quality
-
----
-
-### Market / Company News Explorer
-- Local prototype implemented in `news_explorer.py` using:
-  - Ollama (`dolphin-phi`) for LLM
-  - Ollama embeddings (`mxbai-embed-large`)
-  - NewsAPI (free key) as data source
-- Keyword search works well for tickers like `AAPL`
-- Limitations:
-  - NewsAPI is not always up-to-date
-  - Prototype only; needs larger datasets for better coverage
-  - Possible enhancement: use a web search to find relevant articles first, then apply keyword + semantic search
-- Currently fully local, no web interface yet
-- Next Steps:
-  - Expand hybrid keyword + semantic search
-  - Add RAG summarization for concise company/news insights
-  - Integrate with fresh and larger news sources
-  - Connect to frontend once web app is hosted
 
 ---
 
@@ -219,8 +184,48 @@ Notes:
 
 ---
 
-## (Dynamic Website Branch New Updates: `web-service-deployment`)
+## Current Development Status & Future Improvements (Updated — March 25, 2026)
+
+### Financial Advice Chatbot
+- Current stage: **Financial Related Chatbot using RAG (local setup)**
+  - Hybrid search is **NOT fully implemented yet**
+    - Missing:
+      - keyword search
+      - combining keyword + vector results
+  - Chatbot is fully **usable locally**
+- Next Steps:
+  - Implement keyword search layer
+  - Merge results with vector search (true hybrid retrieval)
+  - Improve prompt structure and response quality
+
+---
+
+### Market / Company News Explorer
+- Local prototype implemented in `news_explorer.py` using:
+  - Ollama (`dolphin-phi`) for LLM
+  - Ollama embeddings (`mxbai-embed-large`)
+  - NewsAPI (free key) as data source
+- Keyword search works well for tickers like `AAPL`
+- Limitations:
+  - NewsAPI is not always up-to-date
+  - Prototype only; needs larger datasets for better coverage
+  - Possible enhancement: use a web search to find relevant articles first, then apply keyword + semantic search
+- Currently fully local, no web interface yet
+- Next Steps:
+  - Expand hybrid keyword + semantic search
+  - Add RAG summarization for concise company/news insights
+  - Integrate with fresh and larger news sources
+  - Connect to frontend once web app is hosted
+
+---
+
+## (Dynamic Website Branch New Updates: `web-service-deployment`) (Updated — March 26, 2026)
 - Connected Google’s free-tier Gemini API key
 - Redid `chatbot.py` (RAG only, no hybrid yet) and `news_explorer.py` for Gemini API integration
 - SQLite used for storing news API stories and other dynamic site data
 - Verified SQLite files filter news correctly
+
+## First Phase Website Draft:
+![General Overview Diagram](HomePagePicture.png)
+![General Overview Diagram](FinancialAdviceChatbot.png)
+![General Overview Diagram](CompanyNewsExplorer.png)

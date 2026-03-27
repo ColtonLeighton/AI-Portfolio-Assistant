@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 
-// -------------------- Pages --------------------
+// Pages
 
 function Home() {
   return (
@@ -56,7 +56,7 @@ function ComingSoon({ title, description, search, goal }) {
   );
 }
 
-// -------------------- Main App --------------------
+// Main App
 
 function App() {
   return (
