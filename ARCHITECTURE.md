@@ -75,7 +75,7 @@ Data Layer
   - Semantic similarity computation
   - Context-aware answer generation
 
-📄 See `AI_PIPELINE.md` for detailed pipeline design.
+See `AI_PIPELINE.md` for detailed pipeline design.
 
 ---
 
