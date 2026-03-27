@@ -53,15 +53,6 @@ AIPortfolioAssistant helps users:
 
 ---
 
-## New Updates (Dynamic Website Branch: `web-service-deployment`)
-- Connected Google’s free-tier Gemini API key
-- Redid `chatbot.py` (RAG only, no hybrid yet) and `news_explorer.py` for Gemini API integration
-- SQLite used for storing news API stories and other dynamic site data
-- Verified SQLite files filter news correctly
-- Added **4 diagrams** (timeline, architecture, AI pipeline, etc.)
-
----
-
 ## AI Stack (Current)
 - **LLM:** Ollama (local, e.g., dolphin-phi)
 - **RAG Framework:** LlamaIndex
@@ -155,6 +146,15 @@ Notes:
   - Merge results with vector search (true hybrid retrieval)
   - Improve prompt structure and response quality
 
+
+## (Dynamic Website Branch New Updates: `web-service-deployment`)
+- Connected Google’s free-tier Gemini API key
+- Redid `chatbot.py` (RAG only, no hybrid yet) and `news_explorer.py` for Gemini API integration
+- SQLite used for storing news API stories and other dynamic site data
+- Verified SQLite files filter news correctly
+- Added **4 diagrams** (timeline, architecture, AI pipeline, etc.)
+
+---
 ---
 
 ### Market / Company News Explorer
