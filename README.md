@@ -148,15 +148,6 @@ Notes:
 
 ---
 
-## (Dynamic Website Branch New Updates: `web-service-deployment`)
-- Connected Google’s free-tier Gemini API key
-- Redid `chatbot.py` (RAG only, no hybrid yet) and `news_explorer.py` for Gemini API integration
-- SQLite used for storing news API stories and other dynamic site data
-- Verified SQLite files filter news correctly
-- Added **4 diagrams** (timeline, architecture, AI pipeline, etc.)
-
----
-
 ### Market / Company News Explorer
 - Local prototype implemented in `news_explorer.py` using:
   - Ollama (`dolphin-phi`) for LLM
@@ -225,3 +216,11 @@ Notes:
 - Host backend + frontend
 - Connect Pinecone vector DB
 - Prepare for real-world usage
+
+---
+
+## (Dynamic Website Branch New Updates: `web-service-deployment`)
+- Connected Google’s free-tier Gemini API key
+- Redid `chatbot.py` (RAG only, no hybrid yet) and `news_explorer.py` for Gemini API integration
+- SQLite used for storing news API stories and other dynamic site data
+- Verified SQLite files filter news correctly
