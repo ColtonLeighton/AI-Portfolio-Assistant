@@ -146,6 +146,7 @@ Notes:
   - Merge results with vector search (true hybrid retrieval)
   - Improve prompt structure and response quality
 
+---
 
 ## (Dynamic Website Branch New Updates: `web-service-deployment`)
 - Connected Google’s free-tier Gemini API key
@@ -154,7 +155,6 @@ Notes:
 - Verified SQLite files filter news correctly
 - Added **4 diagrams** (timeline, architecture, AI pipeline, etc.)
 
----
 ---
 
 ### Market / Company News Explorer
