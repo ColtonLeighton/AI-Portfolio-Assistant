@@ -1,7 +1,5 @@
 # AI-Portfolio-Assistant
 
-![Project Overview](readme.png)
-
 AI-powered assistant for portfolio analysis, market insights, and emerging risk monitoring.
 
 ---
@@ -27,6 +25,8 @@ AIPortfolioAssistant helps users:
 - Analyze portfolios and evaluate holdings
 - Explore market and company news intelligently
 - View interactive dashboards with risk scores, sector exposure, and emerging trends
+
+(readme.png)
 
 ---
 
