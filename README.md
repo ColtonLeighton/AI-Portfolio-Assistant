@@ -1,6 +1,6 @@
 # AI-Portfolio-Assistant
 
-![Project Overview](timeline.png)
+![Project Overview](readme.png)
 
 AI-powered assistant for portfolio analysis, market insights, and emerging risk monitoring.
 
