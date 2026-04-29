@@ -15,7 +15,7 @@ High-level roadmap for building the AI Portfolio Assistant.
 ## Phase 2 — RAG Chatbot (Minimum Viable Product)
 - Implemented Financial Advice Chatbot
 - Built vector index over local documents
-- Connected retrieval → LLM (RAG pipeline)
+- Connected retrieval -> LLM (RAG pipeline)
 
 Result:
 - Working, fully local AI chatbot
