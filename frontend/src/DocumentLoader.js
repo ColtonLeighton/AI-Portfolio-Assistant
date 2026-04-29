@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 export default function DocumentLoader() {
   const [docText, setDocText] = useState("");
