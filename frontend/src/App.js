@@ -4,7 +4,7 @@ import "./App.css";
 import ChatUI from "./ChatUI";
 import DocumentLoader from "./DocumentLoader";
 
-const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 /* -------------------- Home Page -------------------- */
 function Home() {
