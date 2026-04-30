@@ -1,3 +1,5 @@
+console.log(" CHATUI COMPONENT LOADED");
+
 import React, { useState, useRef, useEffect } from "react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
