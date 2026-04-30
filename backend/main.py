@@ -78,3 +78,26 @@ def add_document(request: DocumentRequest):
         return {"status": "success", "message": "Document added!"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# =========================================================
+# NEW DEBUG ENDPOINT (ADDED FOR NEWS INSPECTION)
+# =========================================================
+@app.get("/debug/news")
+def debug_news():
+    """
+    Returns raw rows stored in news.db AFTER fetch_news() runs.
+    This shows EXACT data pulled from NewsAPI before Gemini processing.
+    """
+    conn = sqlite3.connect("news.db")
+    c = conn.cursor()
+    c.execute("SELECT * FROM news")
+    rows = c.fetchall()
+    conn.close()
+
+    print("DEBUG /news HIT - rows:", len(rows))
+
+    return {
+        "count": len(rows),
+        "rows": rows
+    }
