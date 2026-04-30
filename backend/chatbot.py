@@ -35,6 +35,9 @@ def embed_texts(texts):
 # -------------------- Query Chatbot (RAG) --------------------
 def get_response(query):
 
+    print("DOCS:", docs)
+    print("QUERY:", query)
+    
     if not client:
         raise ValueError("Gemini client not initialized")
 
