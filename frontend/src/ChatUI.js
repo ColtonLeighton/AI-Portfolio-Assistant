@@ -23,7 +23,7 @@ export default function ChatUI({ title, endpoint, placeholder }) {
     setMessages((prev) => [...prev, userMessage]);
 
     try {
-      const res = await fetch(`${BACKEND_URL}/${endpoint}`, {
+      const res = await fetch(`${BACKEND_URL.replace(/\/$/, "")}/${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body:
