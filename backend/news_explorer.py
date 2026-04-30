@@ -72,6 +72,8 @@ def get_news_response(topic):
     fetch_news(topic)
     articles = load_articles()
 
+    print("get_news_response() called")
+
     if not articles:
         return "No news found."
 
