@@ -12,6 +12,9 @@ export default function ChatUI({ title, endpoint, placeholder }) {
   }, [messages]);
 
   const sendMessage = async () => {
+
+    console.log("BACKEND_URL =", BACKEND_URL);
+    
     if (!input.trim()) return;
 
     const userMessage = { role: "user", content: input };
