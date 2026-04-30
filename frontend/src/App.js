@@ -4,40 +4,36 @@ import "./App.css";
 import ChatUI from "./ChatUI";
 import DocumentLoader from "./DocumentLoader";
 
-/* -------------------- Home Page -------------------- */
+/* -------------------- Home -------------------- */
 function Home() {
   return (
     <div className="container">
       <h1>AI Portfolio Assistant</h1>
 
       <p>
-        An AI-powered system for financial insights, market news, and portfolio
-        analysis using <b>Gemini AI + real-time News APIs</b> and retrieval-augmented generation (RAG).
+        A modular AI system that combines <b>RAG (Retrieval-Augmented Generation)</b>,
+        semantic search, keyword search, and a custom-prompted Gemini-based LLM pipeline
+        to generate financial and market insights.
       </p>
 
-      <h2>How it works</h2>
+      <h2>Purpose</h2>
       <p>
-        This system uses Google's Gemini model to analyze financial context.
-        It combines:
+        This project is designed to demonstrate how modern AI systems combine
+        structured data (SQL), unstructured data (news/articles/documents),
+        and LLM reasoning to produce actionable insights.
       </p>
-      <ul>
-        <li>Live NewsAPI data for real-world market updates</li>
-        <li>Document-based retrieval (you paste knowledge manually for now)</li>
-        <li>Semantic search + embeddings for relevance ranking</li>
-        <li>AI-generated summaries and explanations</li>
-      </ul>
 
       <h2>Explore Features</h2>
 
       <div className="feature-grid">
         <div className="feature-card">
-          <Link to="/chatbot">Financial Advice Chatbot</Link>
-          <p>Ask investing questions using Gemini + your uploaded knowledge.</p>
+          <Link to="/chatbot"><b>Financial Advice Chatbot</b></Link>
+          <p>RAG-based system using your uploaded documents + custom Gemini prompting.</p>
         </div>
 
         <div className="feature-card">
-          <Link to="/news">Market / Company News Explorer</Link>
-          <p>Search and summarize real-time financial news using NewsAPI.</p>
+          <Link to="/news"><b>Market / Company News Explorer</b></Link>
+          <p>Hybrid keyword + semantic search over live NewsAPI + AI summarization.</p>
         </div>
 
         <div className="feature-card">
@@ -47,31 +43,34 @@ function Home() {
         <div className="feature-card">
           Emerging Risk Monitor (Coming Soon)
         </div>
+
+        <div className="feature-card">
+          <Link to="/about"><b>About / Creator</b></Link>
+          <p>Information about the developer and project architecture.</p>
+        </div>
       </div>
     </div>
   );
 }
 
-/* -------------------- Chatbot Page -------------------- */
+/* -------------------- Chatbot -------------------- */
 function ChatbotPage() {
   return (
     <div className="container">
       <h1>Financial Advice Chatbot</h1>
 
-      <p>
-        This chatbot uses <b>Google Gemini AI</b> with a retrieval system (RAG).
+      <p className="about-highlight">
+        This chatbot uses a <b>custom Gemini LLM pipeline</b> with Retrieval-Augmented Generation (RAG).
+        You can paste or enter text directly into the document box below. That text is stored in a SQLite
+        database and retrieved dynamically to provide context-aware financial answers.
       </p>
 
       <p>
-        <b>How it works:</b>
+        The system blends:
+        <br />• Your uploaded knowledge (SQLite + embeddings)
+        <br />• Custom Gemini prompt engineering
+        <br />• AI reasoning for finance-related responses
       </p>
-
-      <ul>
-        <li>You can paste financial notes or research into the document box below</li>
-        <li>Right now, documents are manually added (uploads coming soon)</li>
-        <li>The AI retrieves relevant context and combines it with its own reasoning</li>
-        <li>Gemini then generates investment-focused responses</li>
-      </ul>
 
       <ChatUI
         title="Chatbot"
@@ -84,69 +83,101 @@ function ChatbotPage() {
   );
 }
 
-/* -------------------- News Page -------------------- */
+/* -------------------- News -------------------- */
 function NewsPage() {
   return (
     <div className="container">
       <h1>Market / Company News Explorer</h1>
 
-      <p>
-        This feature pulls real-time articles using NewsAPI, then uses Gemini
-        to summarize and connect related stories.
+      <p className="about-highlight">
+        This feature uses NewsAPI to fetch live articles, stores them in SQLite,
+        then applies keyword + semantic search before sending context to a
+        custom Gemini-based summarization model.
       </p>
 
       <ChatUI
         title="News Explorer"
         endpoint="news"
-        placeholder="Ask about markets, companies..."
+        placeholder="Ask about news or companies..."
       />
     </div>
   );
 }
 
-/* -------------------- About Page (NEW) -------------------- */
+/* -------------------- About Page -------------------- */
 function AboutPage() {
   return (
-    <div className="container">
-      <h1>About the Creator</h1>
+    <div className="container about-box">
+      <h1>About / Creator</h1>
 
       <p><b>Colton Leighton</b></p>
       <p>Email: coltonmleighton@gmail.com</p>
 
       <p>
-        Computer Science major graduating from NAU in Spring 2026.
+        Computer Science major graduating from NAU (Spring 2026).
+        Passionate about AI systems, web development, and building
+        production-style full-stack applications.
+      </p>
+
+      <h2>Project Overview</h2>
+
+      <p>
+        This project (<b>AI Portfolio Assistant</b>) is a full-stack AI system
+        designed to explore how modern artificial intelligence pipelines work
+        in real-world applications.
       </p>
 
       <p>
-        I am a CS student and aspiring software engineer passionate about AI,
-        web development, and collaborative projects. I enjoy building systems
-        that combine machine learning, APIs, and real-world applications.
+        It combines:
+        <br />• Keyword search
+        <br />• Semantic vector search
+        <br />• RAG (Retrieval-Augmented Generation)
+        <br />• Structured SQL storage
+        <br />• Custom-prompted Gemini LLM reasoning layer
+      </p>
+
+      <h2>AI System Design Goal</h2>
+
+      <p>
+        The goal of this project is to demonstrate how AI systems can:
+      </p>
+
+      <ul>
+        <li>Combine real-time data (NewsAPI) with stored knowledge (SQLite)</li>
+        <li>Use embedding-based retrieval to improve LLM accuracy</li>
+        <li>Implement hybrid search pipelines (keyword + semantic)</li>
+        <li>Simulate real financial AI advisory systems</li>
+      </ul>
+
+      <h2>Current Status</h2>
+
+      <p>
+        The system is actively under development and will continue to expand into:
+      </p>
+
+      <ul>
+        <li>Portfolio risk scoring dashboard</li>
+        <li>AI-driven investment analysis tools</li>
+        <li>Vector database migration (Pinecone)</li>
+        <li>Advanced multi-source news aggregation</li>
+      </ul>
+
+      <h2>Repository</h2>
+      <p>
+        GitHub:{" "}
+        <a
+          href="https://github.com/ColtonLeighton/AI-Portfolio-Assistant"
+          target="_blank"
+          rel="noreferrer"
+        >
+          AI-Portfolio-Assistant Repo
+        </a>
       </p>
 
       <p>
-        My goal is to contribute to innovative software solutions that improve
-        how people interact with data and AI systems.
+        This repository contains the full backend (FastAPI), frontend (React),
+        and AI pipeline implementations including RAG, embeddings, and news processing.
       </p>
-    </div>
-  );
-}
-
-/* -------------------- Portfolio Page -------------------- */
-function PortfolioPage() {
-  return (
-    <div className="container">
-      <h1>Portfolio Breakdown / Risk Assessment</h1>
-      <div className="coming-soon">Coming Soon</div>
-    </div>
-  );
-}
-
-/* -------------------- Risk Page -------------------- */
-function RiskPage() {
-  return (
-    <div className="container">
-      <h1>Emerging Risk Monitor</h1>
-      <div className="coming-soon">Coming Soon</div>
     </div>
   );
 }
@@ -156,13 +187,10 @@ function App() {
   return (
     <Router>
       <div className="app-wrapper">
-
         <nav className="navbar">
           <Link to="/">Home</Link>
           <Link to="/chatbot">Chatbot</Link>
           <Link to="/news">News</Link>
-          <Link to="/portfolio">Portfolio</Link>
-          <Link to="/risk">Risk</Link>
           <Link to="/about">About</Link>
         </nav>
 
@@ -170,11 +198,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/chatbot" element={<ChatbotPage />} />
           <Route path="/news" element={<NewsPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/risk" element={<RiskPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
-
       </div>
     </Router>
   );
