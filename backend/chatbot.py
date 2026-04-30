@@ -40,6 +40,8 @@ def get_response(query):
 
     docs = load_documents()
 
+    print("get_response() called")
+    
     if not docs:
         return "No documents loaded yet."
 
