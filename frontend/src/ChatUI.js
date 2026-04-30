@@ -1,4 +1,4 @@
-console.log(" CHATUI COMPONENT LOADED");
+console.log("CHATUI COMPONENT LOADED");
 
 import React, { useState, useRef, useEffect } from "react";
 
@@ -14,39 +14,50 @@ export default function ChatUI({ title, endpoint, placeholder }) {
   }, [messages]);
 
   const sendMessage = async () => {
-
     console.log("BACKEND_URL =", BACKEND_URL);
-    
+
     if (!input.trim()) return;
 
     const userMessage = { role: "user", content: input };
     setMessages((prev) => [...prev, userMessage]);
 
     try {
-      const res = await fetch(`${BACKEND_URL.replace(/\/$/, "")}/${endpoint}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body:
-          endpoint === "chatbot"
-            ? JSON.stringify({ query: input })
-            : JSON.stringify({ topic: input }),
-      });
-
-      //if (!res.ok) throw new Error("Request failed");
-      const text = await res.text();
-      console.log("BACKEND ERROR RESPONSE:", text);
-      throw new Error(text);
+      const res = await fetch(
+        `${BACKEND_URL.replace(/\/$/, "")}/${endpoint}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body:
+            endpoint === "chatbot"
+              ? JSON.stringify({ query: input })
+              : JSON.stringify({ topic: input }),
+        }
+      );
 
       const data = await res.json();
 
-      const aiMessage = { role: "assistant", content: data.response };
+      console.log("BACKEND RESPONSE:", data);
+
+      if (!res.ok) {
+        throw new Error(data.detail || "Request failed");
+      }
+
+      const aiMessage = {
+        role: "assistant",
+        content: data.response,
+      };
+
       setMessages((prev) => [...prev, aiMessage]);
     } catch (err) {
+      console.error("Frontend error:", err);
+
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Error: backend not reachable" },
+        {
+          role: "assistant",
+          content: "Error: backend not reachable or failed request",
+        },
       ]);
-      console.error(err);
     }
 
     setInput("");
@@ -60,7 +71,11 @@ export default function ChatUI({ title, endpoint, placeholder }) {
         {messages.map((msg, idx) => (
           <div
             key={idx}
-            className={msg.role === "user" ? "chat-message user" : "chat-message ai"}
+            className={
+              msg.role === "user"
+                ? "chat-message user"
+                : "chat-message ai"
+            }
           >
             {msg.content}
           </div>
@@ -73,7 +88,9 @@ export default function ChatUI({ title, endpoint, placeholder }) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder={placeholder}
-          onKeyDown={(e) => { if (e.key === "Enter") sendMessage(); }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") sendMessage();
+          }}
         />
         <button onClick={sendMessage}>Send</button>
       </div>
