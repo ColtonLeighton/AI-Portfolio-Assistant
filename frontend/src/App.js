@@ -55,21 +55,17 @@ function Home() {
 
 /* -------------------- Chatbot -------------------- */
 function ChatbotPage() {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="container">
       <h1>Financial Advice Chatbot</h1>
 
       <p className="about-highlight">
-        This chatbot uses a <b>custom Gemini LLM pipeline</b> with Retrieval-Augmented Generation (RAG).
-        You can paste or enter text directly into the document box below. That text is stored in a SQLite
-        database and retrieved dynamically to provide context-aware financial answers.
-      </p>
-
-      <p>
-        The system blends:
-        <br />• Your uploaded knowledge (SQLite + embeddings)
-        <br />• Custom Gemini prompt engineering
-        <br />• AI reasoning for finance-related responses
+        This chatbot uses a custom Gemini LLM pipeline with RAG (Retrieval-Augmented Generation).
+        You can paste or enter text directly into the document box below.
       </p>
 
       <ChatUI
