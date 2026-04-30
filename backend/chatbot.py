@@ -35,18 +35,21 @@ def embed_texts(texts):
 # -------------------- Query Chatbot (RAG) --------------------
 def get_response(query):
 
-    print("DOCS:", docs)
+    print("get_response() called")
     print("QUERY:", query)
-    
+
     if not client:
         raise ValueError("Gemini client not initialized")
 
     docs = load_documents()
 
-    print("get_response() called")
-    
+    print("DOCS:", docs)
+
     if not docs:
         return "No documents loaded yet."
+
+    if not query or query.strip() == "":
+        return "Please enter a valid question."
 
     # ---- Semantic Search (Vector Search) ----
     doc_embeddings = embed_texts(docs)
