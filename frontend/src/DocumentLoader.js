@@ -7,33 +7,52 @@ export default function DocumentLoader() {
   const [status, setStatus] = useState("");
 
   const handleSubmit = async () => {
+    console.log("BACKEND_URL =", BACKEND_URL);
+
+    if (!docText.trim()) {
+      setStatus("Please enter some text before submitting.");
+      return;
+    }
+
     try {
-      const res = await fetch(`${BACKEND_URL}/add_document`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: docText }),
-      });
+      const res = await fetch(
+        `${BACKEND_URL.replace(/\/$/, "")}/add_document`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text: docText }),
+        }
+      );
 
-      if (!res.ok) throw new Error("Failed");
+      const data = await res.json();
 
-      setStatus("Document added!");
+      console.log("BACKEND RESPONSE:", data);
+
+      if (!res.ok) {
+        throw new Error(data.detail || "Failed to add document");
+      }
+
+      setStatus("Document added successfully.");
       setDocText("");
     } catch (err) {
+      console.error("Document upload error:", err);
       setStatus("Error adding document");
-      console.error(err);
     }
   };
 
   return (
     <div className="container">
       <h3>Add Knowledge (for Chatbot)</h3>
+
       <textarea
         rows={4}
         value={docText}
         onChange={(e) => setDocText(e.target.value)}
         placeholder="Paste financial info here..."
       />
+
       <button onClick={handleSubmit}>Add Document</button>
+
       <div className="ai-response-box">{status}</div>
     </div>
   );
