@@ -18,9 +18,6 @@ def init_api_key(api_key):
 DB_PATH = "chatbot.db"
 
 def load_documents():
-    """
-    Loads documents from SQLite and removes empty/invalid entries.
-    """
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
 
@@ -28,7 +25,7 @@ def load_documents():
         c.execute("SELECT text FROM documents")
         rows = c.fetchall()
     except Exception as e:
-        print("DB ERROR in load_documents:", e)
+        print("DB ERROR:", e)
         return []
     finally:
         conn.close()
@@ -44,16 +41,13 @@ def load_documents():
 
 # -------------------- Embedding Helper --------------------
 def embed_texts(texts):
-    """
-    Calls Gemini embeddings safely and validates input.
-    """
     if not texts:
-        raise ValueError("embed_texts received empty list")
+        raise ValueError("embed_texts received empty input")
 
-    cleaned = [str(t).strip() for t in texts if t and str(t).strip()]
+    cleaned = [t.strip() for t in texts if t and t.strip()]
 
     if not cleaned:
-        raise ValueError("All embedding inputs were empty after cleaning")
+        raise ValueError("All embedding inputs were empty")
 
     print("Embedding items:", len(cleaned))
 
@@ -73,22 +67,22 @@ def get_response(query):
     if not client:
         raise ValueError("Gemini client not initialized")
 
-    if not query or not str(query).strip():
+    if not query or not query.strip():
         return "Please enter a valid question."
 
-    query = str(query).strip()
+    query = query.strip()
 
     docs = load_documents()
 
     print("Docs preview:", docs[:3])
 
-    if len(docs) == 0:
-        return "No documents loaded yet. Please add knowledge first."
+    if not docs:
+        return "No documents loaded yet."
 
     docs = [d for d in docs if d and d.strip()]
 
-    if len(docs) == 0:
-        return "All documents were empty after cleaning."
+    if not docs:
+        return "All documents were empty."
 
     try:
         doc_embeddings = embed_texts(docs)
