@@ -48,18 +48,22 @@ class DocumentRequest(BaseModel):
 # -------------------- Endpoints --------------------
 @app.post("/chatbot")
 def chatbot_endpoint(request: ChatRequest):
+    print("CHATBOT ENDPOINT HIT")
     try:
         response = chatbot.get_response(request.query)
         return {"response": response}
     except Exception as e:
+        print("CHATBOT ERROR:", e)
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/news")
 def news_endpoint(request: NewsRequest):
+    print("NEWS ENDPOINT HIT")
     try:
         response = news_explorer.get_news_response(request.topic)
         return {"response": response}
     except Exception as e:
+        print("NEWS ERROR:", e)
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/add_document")
