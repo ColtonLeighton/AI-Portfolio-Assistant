@@ -32,7 +32,10 @@ export default function ChatUI({ title, endpoint, placeholder }) {
             : JSON.stringify({ topic: input }),
       });
 
-      if (!res.ok) throw new Error("Request failed");
+      //if (!res.ok) throw new Error("Request failed");
+      const text = await res.text();
+      console.log("BACKEND ERROR RESPONSE:", text);
+      throw new Error(text);
 
       const data = await res.json();
 
