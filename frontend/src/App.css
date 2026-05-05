@@ -1,138 +1,185 @@
-/* Prevent automatic scroll jumping on layout changes */
+/* =========================
+   GLOBAL RESET / BASE
+========================= */
+
 html {
   scroll-behavior: auto;
 }
 
 body {
-  overflow-anchor: none;
-}
-
-html, body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
+  background: #000;
+  color: #eaeaea;
+}
 
-  /* remove height locking */
+html, body {
   min-height: 100%;
 }
 
-/* Root becomes a flexible container (NOT height constrained) */
 #root {
   min-height: 100vh;
 }
 
-/* FULL PAGE BACKGROUND WRAPPER (KEY FIX) */
+/* =========================
+   APP WRAPPER
+========================= */
+
 .app-wrapper {
   min-height: 100vh;
-
-  /* single continuous gradient */
-  background: linear-gradient(180deg, #0892d0 0%, #4b0082 100%);
-
-  /* prevents any “repaint seams” */
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-
-  padding: 2rem;
+  background: #000;
+  padding: 24px;
 }
 
-/* Navbar (glass effect) */
+/* =========================
+   NAVBAR (NO ROUNDING)
+========================= */
+
 .navbar {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 12px;
+  padding: 12px;
 
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-
+  background: #0a0a0a;
+  border: 1px solid #222;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 .navbar a {
-  color: white;
+  color: #eaeaea;
   text-decoration: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.15);
-  transition: 0.2s;
+  padding: 10px 14px;
+  background: #111;
+  border: 1px solid #222;
+  transition: 0.15s;
 }
 
 .navbar a:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: #1a1a1a;
+  border-color: #3a3a3a;
 }
 
-/* Main content cards */
+/* =========================
+   MAIN CONTAINER (CARDS)
+========================= */
+
 .container {
   max-width: 1000px;
-  margin: 2.5rem auto;
-  padding: 2.5rem;
+  margin: 40px auto;
+  padding: 24px;
 
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 18px;
-
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  background: #0b0b0b;
+  border: 1px solid #222;
+  border-radius: 0;
 }
 
-/* Feature grid */
+/* =========================
+   FEATURE GRID
+========================= */
+
 .feature-grid {
   display: grid;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .feature-card {
-  padding: 1.2rem;
-  border-radius: 12px;
-  background: #f7f9fc;
-  border: 1px solid #e6e6e6;
-  transition: transform 0.15s;
+  padding: 16px;
+  background: #0f0f0f;
+  border: 1px solid #222;
+  border-radius: 0;
+  transition: 0.15s;
 }
 
 .feature-card:hover {
-  transform: translateY(-2px);
-  background: #eef6ff;
+  background: #141414;
+  border-color: #3a3a3a;
 }
 
-/* Chat */
+/* =========================
+   CHAT UI
+========================= */
+
 .chat-container {
-  margin: 2rem 0;
-  padding: 1rem;
-  border-radius: 12px;
-  background: #fafafa;
+  margin-top: 20px;
+  padding: 16px;
+  background: #0b0b0b;
+  border: 1px solid #222;
+  border-radius: 0;
 }
 
 .chat-box {
-  max-height: 400px;
+  max-height: 420px;
   overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  background: #fff;
+
+  border: 1px solid #222;
+  background: #000;
+  padding: 12px;
+  margin-bottom: 12px;
 }
 
 .chat-message {
-  padding: 10px 14px;
-  border-radius: 12px;
+  padding: 10px 12px;
   margin-bottom: 10px;
   max-width: 75%;
+  border-radius: 0;
+  border: 1px solid #222;
 }
 
 .chat-message.user {
-  background: #0892d0;
-  color: white;
+  background: #0d2a3a;
+  color: #fff;
   margin-left: auto;
+  border-color: #1f4d66;
 }
 
 .chat-message.ai {
-  background: #e5e5e5;
-  color: #222;
+  background: #111;
+  color: #eaeaea;
 }
 
-/* Input */
+/* =========================
+   INPUT + BUTTONS (GLOBAL STYLE)
+========================= */
+
+input,
+textarea {
+  background: #000;
+  color: #eaeaea;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 0;
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #666;
+}
+
+button {
+  background: #111;
+  color: #eaeaea;
+  border: 1px solid #333;
+  padding: 10px 14px;
+  border-radius: 0;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+button:hover {
+  background: #1a1a1a;
+  border-color: #555;
+}
+
+/* =========================
+   CHAT INPUT ROW
+========================= */
+
 .chat-input-area {
   display: flex;
   gap: 10px;
@@ -140,22 +187,15 @@ html, body {
 
 .chat-input-area input {
   flex: 1;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
 }
 
-.chat-input-area button {
-  background-color: #0892d0;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 16px;
-}
+/* =========================
+   ABOUT / HIGHLIGHT BOX
+========================= */
 
-/* About highlight */
 .about-highlight {
-  background: rgba(8, 146, 208, 0.1);
-  padding: 1rem;
-  border-radius: 10px;
+  background: #0f0f0f;
+  padding: 14px;
+  border: 1px solid #222;
+  border-radius: 0;
 }
