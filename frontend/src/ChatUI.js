@@ -1,5 +1,3 @@
-console.log("CHATUI COMPONENT LOADED");
-
 import React, { useState, useRef, useEffect } from "react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -10,12 +8,10 @@ export default function ChatUI({ title, endpoint, placeholder }) {
   const chatEndRef = useRef(null);
 
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    chatEndRef.current?.scrollIntoView({ behavior: "auto" });
   }, [messages]);
 
   const sendMessage = async () => {
-    console.log("BACKEND_URL =", BACKEND_URL);
-
     if (!input.trim()) return;
 
     const userMessage = { role: "user", content: input };
@@ -36,12 +32,6 @@ export default function ChatUI({ title, endpoint, placeholder }) {
 
       const data = await res.json();
 
-      console.log("BACKEND RESPONSE:", data);
-
-      if (!res.ok) {
-        throw new Error(data.detail || "Request failed");
-      }
-
       const aiMessage = {
         role: "assistant",
         content: data.response,
@@ -49,13 +39,11 @@ export default function ChatUI({ title, endpoint, placeholder }) {
 
       setMessages((prev) => [...prev, aiMessage]);
     } catch (err) {
-      console.error("Frontend error:", err);
-
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content: "Error: backend not reachable or failed request",
+          content: "Error: backend not reachable",
         },
       ]);
     }
@@ -71,11 +59,7 @@ export default function ChatUI({ title, endpoint, placeholder }) {
         {messages.map((msg, idx) => (
           <div
             key={idx}
-            className={
-              msg.role === "user"
-                ? "chat-message user"
-                : "chat-message ai"
-            }
+            className={`chat-message ${msg.role === "user" ? "user" : "ai"}`}
           >
             {msg.content}
           </div>
@@ -88,9 +72,7 @@ export default function ChatUI({ title, endpoint, placeholder }) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder={placeholder}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") sendMessage();
-          }}
+          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
         <button onClick={sendMessage}>Send</button>
       </div>
